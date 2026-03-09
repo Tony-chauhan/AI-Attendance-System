@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Attendance System Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Load Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-eye fa-2x"></i>
+                <h2>AI Attendance</h2>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                <a href="#"><i class="fa-solid fa-users"></i> Users</a>
+                <a href="#"><i class="fa-solid fa-cog"></i> Settings</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Live Dashboard</h1>
+                <div class="user-profile">
+                    <span>Admin</span>
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                </div>
+            </header>
+
+            <section class="live-section">
+                <!-- Camera Feed -->
+                <div class="camera-card card">
+                    <h3><i class="fa-solid fa-video"></i> Live Camera Feed</h3>
+                    <div class="video-container">
+                        <img src="{{ url_for('video_feed') }}" alt="Camera Stream" id="video-stream">
+                    </div>
+                </div>
+
+                <!-- Recent Attendance Logs -->
+                <div class="logs-card card">
+                    <h3><i class="fa-solid fa-list-check"></i> Recent Activity Logs</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Time Logged</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-list">
+                                <!-- Populated dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
